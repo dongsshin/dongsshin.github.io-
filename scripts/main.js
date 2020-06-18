@@ -26,6 +26,7 @@ function setUserName(){
     }else{
         localStorage.setItem('name',userName);
         myHeading.textContent = 'Test page is good, ' + userName;
+        
     }
 }
 fireFoxImage.onclick = function(){
