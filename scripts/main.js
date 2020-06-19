@@ -29,6 +29,29 @@ function setUserName(){
         
     }
 }
+function sum(x,y){
+    return x+y;
+}
+function consoleTest(){
+    console.group("Test Group");
+    console.log("att1");
+    console.log("att2");
+    console.groupEnd();
+
+
+    console.assert(true,"this is true");
+    console.log("%c Color is changed","color:brown;font-size:large");
+    console.dir(document.body);
+
+    console.table([{a:1,b:2,c:3},{a:"dkdkdkdk",b:false,c:undefined}]);
+
+    console.time("Calculate Sum");
+    let sum = 0;
+    for(let i = 0; i < 100000; i++){
+        sum += i;
+    }
+    console.timeEnd("Calculate Sum");
+}
 fireFoxImage.onclick = function(){
     let imageSrc = fireFoxImage.getAttribute('src');
     let imageAlt = fireFoxImage.getAttribute('alt');
