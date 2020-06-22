@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+        #myHeader {
+            background-color: lightblue;
+            color: black;
+            padding: 40px;
+            text-align: center;
+        }
+        .city{
+            background-color: black;
+            color: white;
+            margin: 20px;
+            padding: 20px;
+        }
+        .main {
+            text-align: center;
+        }
+    </style>
+    </head>
+    <body>
+        <button onclick="myFunction1()">Hide elements</button>
+        <button onclick="myFunction2()">My Header Change</button>
+        <h1 id="myHeader">My Cities</h1>
+        <div class="city main">
+            <h2>London</h2>
+            <p>Lodon is oododododoododo</p>
+        </div>
+        <div class="city">
+            <h2>yyyyy</h2>
+            <p>ddddddddddddddddddddddd</p>
+        </div>
+        <script>
+            function myFunction1(){
+                var x = document.getElementsByClassName("city");
+                for(var i = 0; i < x.length; i++){
+                    x[i].style.display = "none";
+                }
+            }
+            function myFunction2() {
+                document.getElementById("myHeader").innerHTML = "Have a nice day!";
+                document.getElementById("myHeader").style.fontSize = "25px"; 
+                document.getElementById("myHeader").style.color = "red";
+                document.getElementById("myHeader").style.backgroundColor = "yellow";   
+            }
+        </script>
+    </body>
+</html>

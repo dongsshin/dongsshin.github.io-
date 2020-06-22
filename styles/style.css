@@ -2,8 +2,29 @@ html {
   font-size: 10px;
   font-family: 'Open Sans', sans-serif;
 }
-
-
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+  background-color: #fff;
+}
+#t01 th {
+  color: white;
+  background-color: black;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+th {
+  text-align: left;
+}
+table {
+  border-spacing: 5px;
+}
 h1 {
   font-size: 60px;
   text-align: center;
