@@ -18,6 +18,9 @@
                 text-align: center;
                 color: chartreuse;
             }
+            p.dotted{
+                outline-style: dotted;
+            }
             p.large{
                 font-size: 300%;
             }
@@ -27,21 +30,103 @@
             }
             p{
                 text-align: left;
-                color: blue;
+/*                color: blue;*/
             }
             h2,h3,h4{
                 text-align: center;
                 color: cadetblue;
                 font-size: 200%;
             }
+            div{
+                background-color: blueviolet;
+                width: 300px;
+                border: 15px solid green;
+                padding: 50px;
+                margin: 20px;
+            }
+            p.outline{
+                margin: 30px;
+                background: yellow;
+                border: 10x solid black;
+                outline-style: 1px solid red;
+                outline-offset: 15px;
+            }
+            p.textleft{
+                text-align: left;
+            }
+            p.textcenter{
+                text-align: center;
+            }
+            p.textright{
+                text-align: right;
+            }
+            p.textjustify{
+                text-align: justify;
+            }
+            img.top{
+                vertical-align: top;
+            }
+            img.middle{
+                vertical-align: middle;
+            }
+            img.bottom{
+                vertical-align: bottom;
+            }
+            p.cancelledline{
+                text-decoration: line-through;
+            }
+            p.capitalize{
+                text-transform: capitalize;
+            }
+            p.letterspacing5{
+                letter-spacing: 5px;
+            }
+            p.letterspacingmi3{
+                letter-spacing: -1px;
+            }
+            p.indent{
+                text-indent: 20px;
+            }
+            a:link{
+                color: red;
+            }
+            a:visited{
+                color: green;
+            }
+            a:hover{
+                color: hotpink;
+            }
+            a:active{
+                color: blueviolet;
+            }
         </style>
     </head>
     <body>
-        <h1 class="center">dkdkdkdkdkkdkdkkkkkkdk </h1>
+        <h1 class="center">ttttttttttttttttttttttt </h1>
         <p id="para1">Hellow World</p>
-        <p class="center large">Center Large</p>
+        <p class="center large dotted cancelledline">Center Large</p>
+        <p class="outline textcenter letterspacingmi3">
+            Outline Test1<br>
+            Outline Test2
+        </p>
+        <p class="outline textjustify cancelledline capitalize letterspacing5 indent">
+            Outline test1<br>
+            Outline testssssssssssssssss2
+        </p>
         <p>This is common</p>
         <h6>Etc</h6>
         <h2>Group Selector Text</h2>
+        <div>
+            adkaskfkaksdfkkasdf
+            asdzfaksfdkafsd
+            asfdkcaksfdkafskdfdsa
+        </div>
+        <p> This  <img src="../../images/w3schools_logo.gif" alt="dddd" width="300" height="50"> is Test</p><br>
+        <p> This  <img class="top" src="../../images/w3schools_logo.gif" alt="dddd" width="300" height="50"> is Test</p><br>
+        <p> This  <img class="middle" src="../../images/w3schools_logo.gif" alt="dddd" width="300" height="50"> is Test</p><br>
+        <p> This  <img class="bottom" src="../../images/w3schools_logo.gif" alt="dddd" width="300" height="50"> is Test</p><br>
+        <br><br>
+        <p><b><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_link" target="_blank">This is a link</a></b></p>
+    
     </body>
 </html>

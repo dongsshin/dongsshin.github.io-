@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            "use strict";
+            class Person{
+                _firstName = "";
+                _lastName = "";
+                _age = 0;
+                constructor(firstName,lastName,age){
+                    this._firstName = firstName;
+                    this._lastName = lastName;
+                    this._age = age;
+                }
+                get firstName(){
+                    return this._firstName;
+                }
+                get lastName(){
+                    return this._lastName;
+                }
+                get age(){
+                    return this._age;
+                }
+                get fullName(){
+                    return this._firstName + this._lastName;
+                }
+                set firstName(firstName){
+                    this._firstName = firstName;
+                }
+                set lastName(lastName){
+                    this._lastName = lastName;
+                }
+                set age(age){
+                    this._age = age;
+                }
+                get fullName(){
+                    return this._firstName + this._lastName;
+                }
+            }
+            class Husband extends Person{
+                _wife = "";
+                constructor(firstName,lastName,age,wife){
+                    super(firstName,lastName,age);
+                    this._wife = wife;
+                }
+                get wife(){
+                    return this._wife;
+                }
+                set wife(wife){
+                    this._wife = wife;
+                }
+            }
+
+            let person1 = new Person("Shin","DongSik",50);
+            person1.age=2000;
+            console.log(person1.age);
+            let husband = new Husband("Shin","DongSik",3000,"Wife");
+            husband.age = 99999;
+            console.log(husband.age);
+
+            const p1=[1,2,3,4];
+            p1.forEach(console.log);
+
+            let name = "Ilya";
+
+            // the expression is a number 1
+            console.log( `hello ${1}` ); // hello 1
+
+            // the expression is a string "name"
+            console.log( `hello ${"name"}` ); // hello name
+
+            // the expression is a variable, embed it
+            console.log( `hello ${name} ${person1} ${p1}` ); // hello Ilya
+
+            let requestURL = "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+            let request = new XMLHttpRequest();
+            request.open("GET",requestURL);
+            request.responseType = 'json';
+            request.send();
+            request.onload = function() {
+                const superHeroes = request.response;
+                console.log(superHeroes); // hello Ilya
+                populateHeader(superHeroes);
+                showHeroes(superHeroes);
+            }
+
+            function populateHeader(jsonObj) {
+                var header = document.createElement('div');
+
+                const myH1 = document.createElement('h1');
+                myH1.textContent = jsonObj['squadName'];
+                header.appendChild(myH1);
+
+                const myPara = document.createElement('p');
+                myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
+                header.appendChild(myPara);
+                document.body.appendChild(header);
+            }
+            function showHeroes(jsonObj) {
+                var section = document.createElement('div');
+                const heroes = jsonObj['members'];
+                    
+                for (let i = 0; i < heroes.length; i++) {
+                    const myArticle = document.createElement('article');
+                    const myH2 = document.createElement('h2');
+                    const myPara1 = document.createElement('p');
+                    const myPara2 = document.createElement('p');
+                    const myPara3 = document.createElement('p');
+                    const myList = document.createElement('ul');
+
+                    myH2.textContent = heroes[i].name;
+                    myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
+                    myPara2.textContent = 'Age: ' + heroes[i].age;
+                    myPara3.textContent = 'Superpowers:';
+                        
+                    const superPowers = heroes[i].powers;
+                    for (let j = 0; j < superPowers.length; j++) {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = superPowers[j];
+                        myList.appendChild(listItem);
+                    }
+
+                    myArticle.appendChild(myH2);
+                    myArticle.appendChild(myPara1);
+                    myArticle.appendChild(myPara2);
+                    myArticle.appendChild(myPara3);
+                    myArticle.appendChild(myList);
+
+                    section.appendChild(myArticle);
+                }
+                document.body.appendChild(section);
+            }
+        </script>
+    </body>
+</html>

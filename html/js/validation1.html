@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+    <body onload="startTime()">
+
+        <input id="id1" type="number" min="100" max="1000" required>
+        <button onclick="validationCheck()">OK</button>
+        <button type="button" onclick="addWithLoacalFunction()">Count!</button>
+        <input type="button" value="Load new document" onclick="newDoc()">
+        <input type="button" value="Back" onclick="goBack()">
+        <input type="button" value="Forward" onclick="goForward()">
+        <button onclick="setTimeout(setTimeoutTest(3000), 30000);">Try it(Time Interval)</button>
+        <button onclick="clearInterval(myVar)">Stop time</button>
+        <button onclick="timedText()">Try it Test</button>
+
+        <p id="p-demo1"></p><br>
+        <p id="p-demo2"></p><br>
+        <p id="p-demo3"></p><br>
+        <p id="demo1"></p><br>
+        <p id="demo2"></p>
+        <br>
+        <p id="demo3"></p>
+        <br>
+        <p id="demo4"></p>
+        <br>
+        <p id="demo5"></p>
+        <br>
+        <p id="demo6"></p>
+        <br>
+        <p id="demo7"></p>
+        <br>
+        <p id="demo8"></p>
+        <br>
+        <p id="demo9"></p>
+        <br>
+        <p id="demo10"></p>
+        <br>
+        <p id="demo11"></p>
+        <br>
+        <p id="demo12"></p>        <br>
+        <p id="demo13"></p>        <br>
+        <p id="demo14"></p>        <br>
+        <p id="demo15"></p><br>
+        <p id="demo16"></p><br>
+        <p id="demo17"></p><br>
+        <p id="demo18"></p><br>
+        <p id="demo19"></p><br>
+        <p id="demo20"></p><br>
+        <p id="demo21"></p><br>
+        <script>
+            /*
+var x1 = {};            // new object
+var x2 = "";            // new primitive string
+var x3 = 0;             // new primitive number
+var x4 = false;         // new primitive boolean
+var x5 = [];            // new array object
+var x6 = /()/           // new regexp object
+var x7 = function(){};  // new function object
+            */
+/**********************************************************************
+           // Adding or changing an object property
+Object.defineProperty(object, property, descriptor)
+
+// Adding or changing many object properties
+Object.defineProperties(object, descriptors)
+
+// Accessing Properties
+Object.getOwnPropertyDescriptor(object, property)
+
+// Returns all properties as an array
+Object.getOwnPropertyNames(object)
+
+// Returns enumerable properties as an array
+Object.keys(object)
+
+// Accessing the prototype
+Object.getPrototypeOf(object)
+
+// Prevents adding properties to an object
+Object.preventExtensions(object)
+// Returns true if properties can be added to an object
+Object.isExtensible(object)
+
+// Prevents changes of object properties (not values)
+Object.seal(object)
+// Returns true if object is sealed
+Object.isSealed(object)
+
+// Prevents any changes to an object
+Object.freeze(object)
+// Returns true if object is frozen
+Object.isFrozen(object)
+**********************************************************************************/
+            function validationCheck(){
+                var inObj = document.getElementById("id1");
+                if(!inObj.checkValidity()){
+                    document.getElementById("demo1").innerHTML=inObj.validationMessage;
+                }else{
+                    document.getElementById("demo1").innerHTML="Ok";
+                }
+            }
+            var person = new Object();
+            person.firstName = "Shin";
+            person.lastName = "DongSik";
+            person.age = 100;
+            person.eyeColor = "blue";
+            document.getElementById("demo2").innerHTML=person.firstName + " " + person.lastName;
+
+            var person1 = {firstName:"Shin",lastName:"dongsik",age:50,eyeColer:"blue"};
+
+            document.getElementById("demo3").innerHTML=person1.firstName + " " + person1.lastName;
+            var desc = "";
+            for(var x in person1){
+                desc = desc + person1[x] + " ";
+            }
+            document.getElementById("demo4").innerHTML=desc;
+
+
+            var person2={
+                firstName:"Shin",
+                lastName:"dongsik",
+                age:33333,
+                id:12244,
+                today:new Date(),
+                /**********************************Getter********************************/
+                get fullName2(){
+                    return this.firstName + " get " + this.lastName;
+                },
+                /**********************************Setter********************************/
+                set name(firstName){
+                    this.firstName = firstName;
+                },
+                /**********************************Function Defination********************************/
+                fullName : function(){
+                    return this.firstName + "," + this.lastName;
+                },
+                fullName1 : function() {
+                    return this.firstName + " " + this.lastName;
+                }
+            };
+            document.getElementById("demo5").innerHTML=person2.fullName() + "///////" + person2.fullName;
+            /*Function Add*/
+            person2.nameNew = function() {
+                return this.firstName + "............." + this.lastName; 
+            }
+            var personArray = Object.values(person2);
+            document.getElementById("demo6").innerHTML=personArray;
+            document.getElementById("demo7").innerHTML=JSON.stringify(person2);
+            
+            person2.name="dddddddddddddddddddddddddddddddddd";
+            document.getElementById("demo8").innerHTML=JSON.stringify(person2);
+            var arr = ["John", "Peter", "Sally", "Jane"];
+            document.getElementById("demo9").innerHTML=JSON.stringify(arr);
+
+            var person3={
+                _firstName:"Shin",
+                _lastName:"dongsik",
+                _age:33333,
+                _id:12244,
+                set firstName(firstName){
+                    this._firstName = firstName;
+                },
+                set lastName(lastName){
+                    this._lastName = lastName;
+                },
+                set age(age){
+                    this._age = age;
+                },
+                set id(id){
+                    this._id = id;
+                }
+            }
+            person3.firstName = "firstName";
+            person3.lastName = "lastName";
+            person3.age = 44444444444;
+            person3.id = 444444;
+
+            document.getElementById("demo10").innerHTML=JSON.stringify(person3);
+            function PersonNew(first, last, age, eye) {
+                this._firstName = first;
+                this._lastName = last;
+                this._age = age;
+                this._eyeColor = eye;
+                /**********************************Function Defination********************************/
+                this.name = function() {
+                    return this._firstName + " " + this._lastName
+                };
+                this.changeName = function (name) {
+                    this._lastName = name;
+                };
+                /************************************************************************************/
+            };
+            var myFather = new PersonNew("John", "Doe", 50, "blue");
+            document.getElementById("demo11").innerHTML=JSON.stringify(myFather);
+            
+            document.getElementById("demo12").innerHTML=myFather.name();
+            myFather.changeName("Changed");
+            document.getElementById("demo13").innerHTML=JSON.stringify(myFather);
+            /************************************************************************************/
+
+            function Person4(first, last, age, eyecolor) {
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.eyeColor = eyecolor;
+            }
+            
+            /***************************Funtion Adding******************************************/
+            Person4.prototype.name = function() {
+                return this.firstName + " " + this.lastName;
+            };
+            var myFather4 = new Person4("John", "Doe", 88850, "blue");
+            /*
+            Object.preventExtensions(myFather4);
+            myFather4.dkdkdkdkd = "ddddddddddddddddddddd";
+            */
+            document.getElementById("demo14").innerHTML=JSON.stringify(myFather4) + "" + myFather4.name();
+            /***************************Funtion Variable******************************************/
+            var func1 = function(a,b){return a*b};
+            var val1 = func1(10,30);
+            
+            var func2 = new Function("a", "b", "return a * b");
+            var val2 = func2(4, 3);
+
+            document.getElementById("demo15").innerHTML=val1 + " " + val2;
+            /***************************self-invoke function******************************************/
+            
+            (function () {
+                document.getElementById("demo16").innerHTML = "Hello! I called myself";
+            })();
+            
+            /**************************Variable Function Declaration**********************************/
+            
+            const xy = (x, y) => { return x * y };
+            //const xy = (x, y) => x * y;
+            document.getElementById("demo17").innerHTML = xy(5, 5) + " eeeeeeeeeeeeeeeee ";
+            
+            function func3(a,b,c,d,e){
+                console.log(arguments.callee);
+                console.log(e);
+                for(var i=0;i < arguments.length;i++){
+                    console.log(arguments[i]);
+                }
+                return arguments.length;
+            }
+            //var val3 = func3(3,4);
+            console.log("end");
+            console.log(func3(100,"ddd",200,"eee"));
+            console.log(func3.toString());
+
+            function sumAll(){
+                var sumValue=0;
+                for(var i=0;i<arguments.length;i++){
+                    sumValue += arguments[i];
+                }
+                return sumValue;
+            }
+            console.log(sumAll(1,2,3,4,5,6));
+            /**************************Recursive Function**********************************/
+            function recur(a){
+                //Global variable declaration in function
+                dddddddddddddddddd = 100000;
+                console.log("recur(" + a + ")");
+                if(a > 10 ) return a;
+                return(recur(a+1));
+            }
+            console.log(recur(1));
+            /********************Operation with call**************************/
+            var person6 = {
+                
+                fullName : function(a,b){
+                    return this.firstName + this.lastName + a + b;
+                }
+            }
+            var person7 = {
+                firstName:"first7",
+                lastName:"second7"
+            }
+            var person8 = {
+                firstName:"first8",
+                lastName:"second8"
+            }
+            console.log(person6.fullName.call(person7,"aaaaaaaaaaaaa","bbbbbbbbbbbbbbbbbb"));
+            console.log(person6.fullName.apply(person7,["aaaaaaaaaaaaa","bbbbbbbbbbbbbbbbbb"]));
+
+            console.log(dddddddddddddddddd);
+            /********************Function within Function**************************/
+            function add() {
+                var counter = 0;
+                function plus() {counter += 1;}
+                plus();  
+                return counter; 
+            }
+            console.log(add());
+
+            /********************Location**************************/
+            var addWithLocal = (function () {
+                var counter = 0;
+                return function () {counter += 1; return counter;}
+            })();
+            function addWithLoacalFunction(){
+                document.getElementById("demo18").innerHTML = addWithLocal();
+            }
+            document.getElementById("demo19").innerHTML = "The full URL of this page is:<br>" + window.location.href + ", Host:" + window.location.hostname;
+            function newDoc() {
+                window.location.assign("https://www.w3schools.com")
+            }
+            function goBack() {
+                window.history.back()
+            }
+            function goForward() {
+                window.history.forward()
+            }
+            document.getElementById("demo20").innerHTML = "cookiesEnabled is " + navigator.cookieEnabled + ", navigator.appName: "  + navigator.appName;
+            /********************Timer**************************/
+            function setTimeoutTest(a) {
+                alert("Time Interval delayed(" + a + ")");
+            }
+            var myVar = setInterval(myTimer ,500);
+            function myTimer() {
+                var d = new Date();
+                document.getElementById("p-demo1").innerHTML = d.toLocaleTimeString();
+            }
+
+            function startTime() {
+                var today = new Date();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById("p-demo2").innerHTML = h + ":" + m + ":" + s;
+                var t = setTimeout(startTime, 500);
+            }
+            function checkTime(i) {
+                if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+                return i;
+            }
+            function timedText() {
+                for(var i = 0; i < 100; i++){
+                    setTimeout(myTimeout(i), 2000); 
+                }
+                /*
+                setTimeout(myTimeout1, 2000) 
+                setTimeout(myTimeout2, 4000) 
+                setTimeout(myTimeout3, 6000) */
+            }
+            function myTimeout(a) {
+                document.getElementById("p-demo3").innerHTML =  a + " seconds";
+            }
+            function myTimeout1() {
+                document.getElementById("p-demo3").innerHTML = "2 seconds";
+            }
+            function myTimeout2() {
+                document.getElementById("p-demo3").innerHTML = "4 seconds";
+            }
+            function myTimeout3() {
+                document.getElementById("p-demo3").innerHTML = "6 seconds";
+            }
+            /********************Cookie Handling**************************/
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                var expires = "expires="+ d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+            function checkCookie() {
+                var user = getCookie("username");
+                if (user != "") {
+                    alert("Welcome again " + user);
+                } else {
+                    user = prompt("Please enter your name:", "");
+                    if (user != "" && user != null) {
+                        setCookie("username", user, 365);
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

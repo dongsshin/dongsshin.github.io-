@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            /**************Spread Syntax*************/
+
+            function sum(x,y,z){
+                return x+y+z;
+            }
+            const numbers=[1,2,3];
+            console.log(sum(...numbers));
+
+            const num =[...numbers,"four","five","six"];
+            console.log(num);
+
+
+            const foo = {x:1};
+            const bar = {y:2};
+            const foobar = {...foo,...bar};
+            console.log(foobar);
+            /**************Rest Parameter*************/
+            function sum1(...args){
+                return args.reduce((x,y)=>x+y);
+            }
+            console.log(sum1(1,2,3,4,5,6,7,8));
+            const number1 = [1,2,3];
+            console.log(sum1(1,2));
+            console.log("sum1(number1):" + sum1);
+            console.log("sum1(number1):" + sum1(number1));
+            console.log("sum1(...number1):" + sum1(...number1));
+        
+            let arr = [];
+            for(let i = 0; i < 100; i++){
+                arr.push(i);
+            }
+            console.log(arr);
+
+        </script>
+    </body>
+</html>
